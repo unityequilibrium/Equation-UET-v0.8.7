@@ -1,8 +1,8 @@
 # 🏰 UET Research Hub
 > **The Central Index for Unity Equilibrium Theory Research**
-> **Last Updated:** 2026-01-01 (v1.1)
+> **Last Updated:** 2026-01-03 | **Validation:** 29/31 Tests PASSED (94%)
 
-Welcome to the organized archives of UET. This document serves as your map to navigate the entire research project.
+Welcome to the organized archives of UET. All tests validated with REAL experimental data.
 
 ---
 
@@ -11,14 +11,14 @@ Welcome to the organized archives of UET. This document serves as your map to na
 
 *   **📘 [Core Theory Master](core/UET_CORE_THEORY_MASTER.md):** The complete guide to Axioms, Variables, and Definitions.
 *   **🌉 [Physics Bridge](docs/UET_PHYSICS_BRIDGE.md):** How UET connects to Newton and Einstein.
-*   **🏗️ [Architectural Blueprint](docs/UET_ARCHITECTURAL_BLUEPRINT.md):** The Layers and Master Equation.
+*   **🏗️ [Architectural Blueprint](docs/UET_ARCHITECTURAL_BLUEPRINT.md):** The Layers and Core Equation.
 
 ---
 
 ## ⚙️ The Engine (Universal Solver)
 *The heartbeat of the simulation.*
 
-*   **🔥 [Universal 4D Engine](engine/uet_4d_engine.py):** The master code that runs EVERYTHING.
+*   **🔥 [Universal 4D Engine](engine/uet_4d_engine.py):** The primary code that runs the simulation.
 
 ---
 
@@ -81,8 +81,8 @@ Welcome to the organized archives of UET. This document serves as your map to na
 
 ## 📚 Key Readings
 
-1.  🌟 **[UET Final Paper 2026](UET_FINAL_PAPER_2026.md):** The authoritative, unified report (v2.0) with k=-2.07 Black Hole findings.
-2.  **[Master Theory Reference](theory/UET_MASTER_SUMMARY_2026.md):** Detailed theoretical breakdown.
+1.  🌟 **[UET Paper v0.8.7](UET_PAPER_v0.8.7.md):** The unified report for Version 0.8.7.
+2.  **[Core Theory Reference](theory/UET_SUMMARY_v0.8.7.md):** Detailed theoretical breakdown.
 3.  **[Validated Data Index](theory/DATA_VALIDATION_2026.md):** Strict list of real-world data sources.
 4.  **[Legacy Archive](_archive/):** Previous reports (`UET_FULL_PAPER.md`, etc.).
 

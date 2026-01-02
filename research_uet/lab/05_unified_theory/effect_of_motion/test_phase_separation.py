@@ -8,10 +8,27 @@ Reference:
 - Rundman & Hilliard (1967), Acta Metall. 15, 1025
 
 Data: Al-22 at.% Zn at 65°C (SAXS measurements)
+
+Updated for UET V3.0
 """
 
 import numpy as np
 import sys
+
+# Import from UET V3.0 Master Equation
+import sys
+from pathlib import Path
+_root = Path(__file__).parent
+while _root.name != "research_uet" and _root.parent != _root:
+    _root = _root.parent
+sys.path.insert(0, str(_root.parent))
+try:
+    from research_uet.core.uet_master_equation import (
+        UETParameters, SIGMA_CRIT, strategic_boost, potential_V, KAPPA_BEKENSTEIN
+    )
+except ImportError:
+    pass  # Use local definitions if not available
+
 import os
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

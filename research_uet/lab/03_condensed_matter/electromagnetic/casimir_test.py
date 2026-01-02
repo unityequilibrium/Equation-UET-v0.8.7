@@ -1,13 +1,14 @@
 """
-🔬 Casimir Effect Test with REAL Experimental Data
-====================================================
+🔬 Casimir Effect Test with REAL Experimental Data (V3.0)
+==========================================================
 Compares UET predictions against actual experimental measurements.
 
 Data Sources:
 1. Mohideen & Roy (1998) - PRL 81, 4549
 2. Lamoreaux (1997) - PRL 78, 5
 
-This test uses REAL DATA, not theoretical formulas!
+Uses UET V3.0 Master Equation:
+    κ term (gradient) connects to vacuum energy
 """
 
 import numpy as np
@@ -18,9 +19,24 @@ import sys
 sys.path.append(os.path.dirname(__file__))
 from casimir_experimental_data import load_mohideen_data, load_lamoreaux_data, save_data
 
-# Physical constants
-HBAR = 1.054571817e-34  # J·s
-C = 2.99792458e8  # m/s
+# Add research_uet root path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(current_dir))))
+if root_dir not in sys.path:
+    sys.path.insert(0, root_dir)
+
+from research_uet.theory.utility.universal_constants import c, hbar
+
+# Import from UET V3.0 Master Equation
+try:
+    from research_uet.core.uet_master_equation import UETParameters, KAPPA_BEKENSTEIN
+except ImportError:
+    sys.path.insert(0, os.path.join(root_dir, "research_uet"))
+    from core.uet_master_equation import UETParameters, KAPPA_BEKENSTEIN
+
+# Physical constants (Mapped to Universal)
+HBAR = hbar
+C = c
 PI = np.pi
 
 

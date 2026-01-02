@@ -6,15 +6,39 @@ Tests UET interpretation of:
 2. Solar neutrino flux (Borexino detection)
 
 Principle: UET explains neutrino mass via I-field coupling loops.
+
+Updated for UET V3.0
 """
 
 import sys
 import os
+
+# Import from UET V3.0 Master Equation
+import sys
+from pathlib import Path
+
+_root = Path(__file__).parent
+while _root.name != "research_uet" and _root.parent != _root:
+    _root = _root.parent
+sys.path.insert(0, str(_root.parent))
+try:
+    from research_uet.core.uet_master_equation import (
+        UETParameters,
+        SIGMA_CRIT,
+        strategic_boost,
+        potential_V,
+        KAPPA_BEKENSTEIN,
+    )
+except ImportError:
+    pass  # Use local definitions if not available
+
 import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-from data_vault.particle_physics.neutrino_extended_data import (
+# Use local data file
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "data"))
+from neutrino_extended_data import (
     KATRIN_RESULTS,
     SOLAR_NEUTRINOS_BOREXINO,
     CNB_DATA,

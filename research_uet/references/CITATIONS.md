@@ -1,6 +1,43 @@
 # 📚 Data Sources & Citations
 
 **เอกสารอ้างอิงข้อมูลทั้งหมดสำหรับ UET Research**
+**Last updated: 2026-01-02**
+
+---
+
+## 🔴 CRITICAL: Thermodynamic Foundation
+
+UET ต้องเชื่อมกับ references เหล่านี้เสมอ:
+
+### Bridging Principles (ต้องอ้างอิงในทุก test)
+
+| Principle | Paper | Connection to UET |
+|-----------|-------|-------------------|
+| **Landauer** | Landauer 1961, Nature 2012 (Bérut) | β = kT ln(2) |
+| **Bekenstein** | Bekenstein 1981 | κ = L_P²/4, S ≤ A/4L_P² |
+| **Jacobson** | Jacobson 1995, PRL | Gravity from Thermodynamics |
+| **Verlinde** | Verlinde 2011 | Entropic Gravity |
+
+```bibtex
+@article{landauer1961,
+  author = {Landauer, R.},
+  title = {Irreversibility and Heat Generation in the Computing Process},
+  journal = {IBM Journal of Research and Development},
+  volume = {5},
+  pages = {183-191},
+  year = {1961}
+}
+
+@article{jacobson1995,
+  author = {Jacobson, Ted},
+  title = {Thermodynamics of Spacetime: The Einstein Equation of State},
+  journal = {Physical Review Letters},
+  volume = {75},
+  pages = {1260},
+  year = {1995},
+  doi = {10.1103/PhysRevLett.75.1260}
+}
+```
 
 ---
 

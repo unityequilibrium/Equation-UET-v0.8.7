@@ -14,19 +14,41 @@ UET Addition:
     Λ → β × I_field (Information Field replaces cosmological constant)
 
 Reference: Einstein (1915), Verlinde (2016), Vanchurin (2020)
+
+Updated for UET V3.0
 """
 
-import numpy as np
-from dataclasses import dataclass
-from typing import Tuple, Optional
+import sys
+
+# Import from UET V3.0 Master Equation
+import sys
+from pathlib import Path
+_root = Path(__file__).parent
+while _root.name != "research_uet" and _root.parent != _root:
+    _root = _root.parent
+sys.path.insert(0, str(_root.parent))
+try:
+    from research_uet.core.uet_master_equation import (
+        UETParameters, SIGMA_CRIT, strategic_boost, potential_V, KAPPA_BEKENSTEIN
+    )
+except ImportError:
+    pass  # Use local definitions if not available
+
+import os
+
+# Add research_uet root path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(current_dir))))
+if root_dir not in sys.path:
+    sys.path.insert(0, root_dir)
+
+from research_uet.theory.utility.universal_constants import c, G, hbar, kB, M_sun
 
 # =============================================================================
 # PHYSICAL CONSTANTS (SI Units)
 # =============================================================================
-c = 2.998e8  # Speed of light (m/s)
-G = 6.674e-11  # Gravitational constant (m³/kg/s²)
-hbar = 1.055e-34  # Reduced Planck constant (J·s)
-k_B = 1.381e-23  # Boltzmann constant (J/K)
+# Imported from universal_constants
+k_B = kB  # Alias for local compatibility
 
 # Cosmological
 H_0 = 2.2e-18  # Hubble constant (1/s) ≈ 70 km/s/Mpc
@@ -38,10 +60,10 @@ Lambda_obs = 1.11e-52  # Observed Λ (m⁻²) from Planck 2018
 R_H = np.sqrt(3 / Lambda_obs)  # Holographic radius ≈ 1.6e26 m
 Sigma_crit = c**2 / (G * R_H)  # Critical surface density ≈ 1.37e9 M_sun/kpc²
 
-# Unit conversions for astrophysics
-M_sun = 1.989e30  # Solar mass (kg)
+# Unit conversions for astrophysics (M_sun imported from universal_constants)
 kpc = 3.086e19  # Kiloparsec (m)
 km_s = 1e3  # km/s to m/s
+
 
 # G in astrophysical units: (km/s)² kpc / M_sun
 G_astro = 4.302e-6

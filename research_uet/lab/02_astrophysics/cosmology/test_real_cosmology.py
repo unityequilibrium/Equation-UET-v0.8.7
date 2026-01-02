@@ -14,10 +14,36 @@ Methodology:
 1. Load Real H0 and Omega_L from Planck data.
 2. Calculate Observed Lambda: Lambda_obs = 3 * (H0/c)^2 * Omega_L
 3. Calculate UET Prediction
+
+Updated for UET V3.0
 """
 
 import numpy as np
 import os
+
+# Import from UET V3.0 Master Equation
+import sys
+from pathlib import Path
+_root = Path(__file__).parent
+while _root.name != "research_uet" and _root.parent != _root:
+    _root = _root.parent
+sys.path.insert(0, str(_root.parent))
+try:
+    from research_uet.core.uet_master_equation import (
+        UETParameters, SIGMA_CRIT, strategic_boost, potential_V, KAPPA_BEKENSTEIN
+    )
+except ImportError:
+    pass  # Use local definitions if not available
+
+import sys
+
+# Add research_uet root path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(current_dir))))
+if root_dir not in sys.path:
+    sys.path.insert(0, root_dir)
+
+from research_uet.theory.utility.universal_constants import c
 
 
 def load_planck_data(filepath):
@@ -64,7 +90,6 @@ def run_test():
     print(f"📊 Analyzing {len(datasets)} Independent Observations...")
 
     # Constants
-    c = 2.998e8
     Mpc_km = 3.086e19
 
     # Analyze Each

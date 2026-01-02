@@ -1,6 +1,6 @@
 """
-UET Hadron Mass Model
-=====================
+UET Hadron Mass Model (V3.0)
+============================
 Corrected hadron mass calculation using constituent quark model
 enhanced with UET confinement term (βCI).
 
@@ -12,15 +12,42 @@ Where:
 - σ: String tension (~0.9 GeV/fm)
 - r: Hadron radius (~0.8 fm)
 - β: UET coupling (calibrated)
+
+Uses UET V3.0 Master Equation:
+    Confinement comes from V(C) potential term
+    Data: PDG 2024 + Lattice QCD (FLAG 2024)
 """
 
 import numpy as np
 import sys
 import os
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Path setup
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(current_dir))))
+sys.path.insert(0, root_dir)
+sys.path.insert(0, os.path.dirname(current_dir))
 
 from data.hadron_mass_data import MESON_MASSES, BARYON_MASSES, QUARK_MASSES, CONFINEMENT_PARAMS
+
+# Import from UET V3.0 Master Equation
+try:
+    from research_uet.core.uet_master_equation import UETParameters, potential_V
+except ImportError:
+    sys.path.insert(0, os.path.join(root_dir, "research_uet"))
+    try:
+        from core.uet_master_equation import UETParameters, potential_V
+    except ImportError:
+        # Fallback - define minimal UETParameters if not available
+        from dataclasses import dataclass
+
+        @dataclass
+        class UETParameters:
+            alpha: float = 1.0
+            gamma: float = 0.025
+
+        def potential_V(C, params):
+            return (params.alpha / 2) * C**2 + (params.gamma / 4) * C**4
 
 
 # ================================================================

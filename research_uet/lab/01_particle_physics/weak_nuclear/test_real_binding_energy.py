@@ -11,10 +11,27 @@ Methodology:
 3. Fit UET Semi-Empirical Mass Formula (SEMF equivalent):
    B(A) = a_vol*A - a_surf*A^(2/3) - a_coul*Z^2/A^(1/3) ...
 4. Verify the Curve Peaks around A=56 (Iron/Nickel region).
+
+Updated for UET V3.0
 """
 
 import numpy as np
 import matplotlib.pyplot as plt
+
+# Import from UET V3.0 Master Equation
+import sys
+from pathlib import Path
+_root = Path(__file__).parent
+while _root.name != "research_uet" and _root.parent != _root:
+    _root = _root.parent
+sys.path.insert(0, str(_root.parent))
+try:
+    from research_uet.core.uet_master_equation import (
+        UETParameters, SIGMA_CRIT, strategic_boost, potential_V, KAPPA_BEKENSTEIN
+    )
+except ImportError:
+    pass  # Use local definitions if not available
+
 import os
 
 

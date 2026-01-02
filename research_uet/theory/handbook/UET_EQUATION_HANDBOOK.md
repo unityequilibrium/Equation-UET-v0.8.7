@@ -3,13 +3,13 @@
 
 ---
 
-## 1. The Master Equation (Free Energy Functional)
+## 1. The Core Equation (Free Energy Functional)
 
 The core of UET is the minimization of the functional $\Omega$:
 
 $$ \Omega[C, I] = \int \left( V(C) + \frac{\kappa}{2}|\nabla C|^2 + \beta C I \right) dx $$
 
-*   **$\Omega$**: Theory of Everything state (Unity).
+*   **$\Omega$**: Unified State (Unity).
 *   **$V(C)$**: Potential energy (e.g., Quartic $aC^2 + \delta C^4$).
 *   **$\kappa$**: Gradient penalty (Interaction limit, related to $c$).
 *   **$\beta$**: Coupling constant between Matter ($C$) and Information ($I$).

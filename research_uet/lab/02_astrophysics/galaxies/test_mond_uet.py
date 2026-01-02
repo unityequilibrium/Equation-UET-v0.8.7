@@ -12,21 +12,40 @@ UET Interpretation:
     μ = Information Field response function
 
 Reference: Milgrom (1983), McGaugh et al. (2016)
+
+Updated for UET V3.0
 """
 
 import numpy as np
 import sys
+
+# Import from UET V3.0 Master Equation
+import sys
+from pathlib import Path
+_root = Path(__file__).parent
+while _root.name != "research_uet" and _root.parent != _root:
+    _root = _root.parent
+sys.path.insert(0, str(_root.parent))
+try:
+    from research_uet.core.uet_master_equation import (
+        UETParameters, SIGMA_CRIT, strategic_boost, potential_V, KAPPA_BEKENSTEIN
+    )
+except ImportError:
+    pass  # Use local definitions if not available
+
 import os
 
 # Add parent directory for imports
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))))
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(current_dir))))
+if root_dir not in sys.path:
+    sys.path.insert(0, root_dir)
+
+from research_uet.theory.utility.universal_constants import c
 
 # =============================================================================
 # MOND CONSTANTS (with UET derivation)
 # =============================================================================
-
-# Speed of light (m/s)
-c = 2.998e8
 
 # Hubble constant (1/s) ≈ 70 km/s/Mpc
 H0 = 2.2e-18
@@ -35,13 +54,11 @@ H0 = 2.2e-18
 R_H = c / H0  # ≈ 1.36e26 m
 
 # CI Coupling factor (UET parameter, derived from MOND empirical fit)
-# a0_MOND ≈ 1.2e-10 m/s², cH0 ≈ 6.6e-10 m/s²
-# => β_CI = a0_MOND / (c × H0) ≈ 0.18
 BETA_CI = 0.18
 
 # MOND acceleration scale (derived from Holographic Bound + CI coupling)
-# This is NOT arbitrary — it's derived from UET!
 a0 = BETA_CI * c * H0  # ≈ 1.2e-10 m/s²
+
 
 # G in astrophysical units: (km/s)² kpc / M_sun
 G_astro = 4.302e-6

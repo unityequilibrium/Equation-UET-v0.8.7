@@ -10,7 +10,6 @@ ENV/
 env/
 
 # Large data files (not for GitHub)
-legacy_archive/
 runs_*/
 *.h5
 *.hdf5

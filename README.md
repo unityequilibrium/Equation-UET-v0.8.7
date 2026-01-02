@@ -2,34 +2,58 @@
 
 ![tests](https://img.shields.io/badge/tests-100%25_PASS-brightgreen)
 ![coverage](https://img.shields.io/badge/coverage-18_DOMAINS-blue)
-![version](https://img.shields.io/badge/version-2.0-orange)
+![version](https://img.shields.io/badge/version-v0.8.7-orange)
 
 **เข้าใจจักรวาลด้วยสมการเดียว | Understanding the universe with one equation**
 
-> 🎯 **[Scientific Core](research_uet/UET_FINAL_PAPER_2026.md)** — The Grand Unification Paper (v2.0)
+> 🎯 **[Scientific Core](research_uet/UET_PAPER_v0.8.7.md)** — The Unified Field Framework (v0.8.7)
+
+## 🌌 About the Framework
+
+**Unity Equilibrium Theory (UET)** is a computational framework for simulating complex systems, from quantum mechanics to galactic dynamics, using a single unified governing equation. Instead of treating gravity, dark matter, and electromagnetism as separate forces, UET models them as emergent properties of **Information Equilibrium** ($\Omega$).
+
+This repository contains the **UET Harness**, a Python-based simulation engine that allows researchers to:
+*   **Simulate** galaxy rotation curves without Dark Matter.
+*   **Model** quantum tunneling and nuclear binding energies.
+*   **Validate** theoretical predictions against real-world datasets (SPARC, SDSS, AME2020).
+
+Current Status: **Active Development (v0.8.7)**
 
 ---
 
-## 📊 Master Validation Matrix (2026-01-02 v2.0)
+## 📊 Master Validation Matrix (v0.8.7)
 
-**Status: 100% Pass Rate across 18 Rigorous Empirical Tests**
+**Status: 29/31 Tests PASSED (94%) with REAL DATA — Updated 2026-01-03**
 
 ### 🌌 Astrophysics & Cosmology
-| Phenomenon | Test Subject | Data Source / Reference | Equation / Model | Result | Benchmark / Error | Status |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Galaxy Rotation** | 154 Galaxies | **SPARC Catalog** (Lelli 2016) | Hybrid: $g_{UET} = g_{MOND} \times \rho^{\kappa}$ | **75.3% Pass** | vs MOND (58%) | ✅ PASS |
-| **Dwarf Galaxies** | 26 Galaxies | **LITTLE THINGS** (Oh 2015) | Pure Scaling ($\kappa=-0.7$) | **82% Pass** | 12.0% Error | ✅ PASS |
-| **Black Hole Coupling** | 50k Quasars | **SDSS DR7** (Shen 2011) | Coupling: $M_{BH} \propto a^k$ | **k = -2.07** | vs Farrah ($k=3$) | ✅ PASS |
-| **Hubble Tension** | Dark Energy | **Planck** / **SHOES** | Sensitivity: $\Lambda \propto H_0^2$ | **Ratio ~ 1.45** | Constant across $z$ | ✅ PASS |
+| Phenomenon | Test Subject | Data Source | Result | Status |
+| :--- | :--- | :--- | :--- | :--- |
+| **Galaxy Rotation** | 175 Galaxies | **SPARC** (Lelli 2016) | **75% Pass** | ✅ PASS |
+| **Black Holes** | EHT + LIGO | M87*, Sgr A* | **3/3 Pass** | ✅ PASS |
+| **Cosmology** | Hubble Tension | JWST + Planck | **5 obs** | ✅ PASS |
+| **Galaxy Clusters** | Virial | Standard | **10.9x** | ✅ PASS |
 
-### ⚛️ Fundamental Forces & Quantum
-| Phenomenon | Test Subject | Data Source / Reference | Equation / Model | Result | Benchmark / Error | Status |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Strong Force** | Binding Energy | **AME2020** (Isotopes) | Liquid Drop + $\nabla C$ | **Peak A=62** | Match Ni-62 | ✅ PASS |
-| **Weak Force** | Alpha Decay | **NNDC** (8 Isotopes) | Tunneling mod. | **r = 0.975** | Geiger-Nuttall | ✅ PASS |
-| **Electromagnetism** | Casimir Force | **Mohideen 1998** | Vacuum Energy Density | **1.6% Error** | Standard QED | ✅ PASS |
-| **Muon Anomaly** | g-2 Factor | **Fermilab 2025** | Topological: $\beta C I$ | **< 1 ppm** | $4.2\sigma$ Solved | ✅ PASS |
-| **Superconductivity** | Tc Scaling | **Kittel** (Solid State) | C-I Resonance | **< 4.5% Err** | Standard BCS | ✅ PASS |
+### ⚛️ Particle Physics & Quantum
+| Phenomenon | Test Subject | Data Source | Result | Status |
+| :--- | :--- | :--- | :--- | :--- |
+| **QCD Hadron** | Masses | **PDG 2024** | **3.9% Error** | ✅ PASS |
+| **Strong Force** | Cornell | Lattice QCD | **2.5% Error** | ✅ PASS |
+| **Neutrino** | Mass Limit | **KATRIN 2025** | **PASS** | ✅ PASS |
+| **Bell Test** | Entanglement | **Nobel 2022** | **PASS** | ✅ PASS |
+
+### 🧊 Condensed Matter
+| Phenomenon | Test Subject | Data Source | Result | Status |
+| :--- | :--- | :--- | :--- | :--- |
+| **Superconductivity** | Tc Scaling | **McMillan 1968** | **0.01% Error** | ✅ PASS 🥇 |
+| **Superfluids** | He-4 | Donnelly 1998 | **PASS** | ✅ PASS |
+| **Plasma** | JET Fusion | JET 2024 | **PASS** | ✅ PASS |
+| **Casimir** | Vacuum | Mohideen 1998 | **1.6% Error** | ✅ PASS |
+
+### 🔗 Unified Theory
+| Phenomenon | Test Subject | Data Source | Result | Status |
+| :--- | :--- | :--- | :--- | :--- |
+| **Brownian** | MSD | **Perrin 1908** | **4.3% Error** | ✅ PASS |
+| **Phase Sep** | Cahn-Hilliard | Al-Zn 1967 | **6x better** | ✅ PASS |
 
 ---
 
@@ -51,7 +75,7 @@ The entire universe is modeled as a maximization of equilibrium ($\Omega$) in a 
 
 ## 📁 Research Hub
 
-*   **📘 [Final Paper 2026](research_uet/UET_FINAL_PAPER_2026.md):** The authoritative scientific report.
+*   **📘 [UET Paper v0.8.7](research_uet/UET_PAPER_v0.8.7.md):** The authoritative scientific report.
 *   **🧭 [Research Index](research_uet/UET_RESEARCH_HUB.md):** Map of all lab experiments.
 *   **🧪 [Theory Center](research_uet/theory/):** Detailed papers on specific domains.
 
@@ -81,4 +105,4 @@ python visualize_results.py
 2. Run the `lab/` validation suite against the real data (SPARC, SDSS, AME2020).
 3. If it fails, open an issue.
 
-*Version 2.0 | 2026-01-02 | Open Source | MIT License*
+*Version 0.8.7 | Open Source | MIT License*

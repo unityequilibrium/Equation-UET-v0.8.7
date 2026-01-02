@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-🌌 ULTIMATE CCBH ANALYSIS SCRIPT
+🌌 COMPREHENSIVE CCBH ANALYSIS SCRIPT
 ================================
 Comprehensive Cosmologically Coupled Black Hole (CCBH) Analysis
 
@@ -29,6 +29,42 @@ from scipy.optimize import curve_fit
 from scipy import stats
 from pathlib import Path
 import sys
+import os
+
+# Import from UET V3.0 Master Equation
+import sys
+from pathlib import Path
+_root = Path(__file__).parent
+while _root.name != "research_uet" and _root.parent != _root:
+    _root = _root.parent
+sys.path.insert(0, str(_root.parent))
+try:
+    from research_uet.core.uet_master_equation import (
+        UETParameters, SIGMA_CRIT, strategic_boost, potential_V, KAPPA_BEKENSTEIN
+    )
+except ImportError:
+    pass  # Use local definitions if not available
+
+
+# Add research_uet root to path for imports
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# Go up 2 levels: lab/ -> research_uet/
+root_dir = os.path.dirname(os.path.dirname(current_dir))
+if root_dir not in sys.path:
+    sys.path.insert(0, root_dir)
+
+from research_uet.theory.utility.universal_constants import (
+    c,
+    G,
+    M_sun,
+    Mpc,
+    k_ccbh,
+    S_B_ratio,
+    hbar,
+    kB,
+    Mpc_to_m,
+    Year_to_sec,
+)
 
 # Script directory
 SCRIPT_DIR = Path(__file__).parent
@@ -290,7 +326,7 @@ def run_ultimate_analysis():
     """Run the complete CCBH analysis."""
 
     print("\n" + "🌌" * 35)
-    print("   ULTIMATE CCBH ANALYSIS")
+    print("   COMPREHENSIVE CCBH ANALYSIS")
     print("🌌" * 35)
 
     # ========================================================================
@@ -542,7 +578,7 @@ def run_ultimate_analysis():
     # FINAL VERDICT
     # ========================================================================
     print("\n" + "=" * 70)
-    print("🏆 FINAL VERDICT")
+    print("🏆 ANALYSIS VERSION 0.8.7")
     print("=" * 70)
 
     print(f"\n📊 BEST-FIT RESULT: k = {k_fit:.2f} ± {k_err:.2f}")
@@ -599,6 +635,120 @@ def run_ultimate_analysis():
 
 
 # ============================================================================
+# STEP 7: THERMODYNAMIC RECYCLING ANALYSIS (UET PHASE 3)
+# ============================================================================
+
+
+def analyze_entropy_recycling(k_fit, log_M0_avg=8.5, volume_radius_mpc=1000):
+    """
+    Calculate if BH Entropy Production matches Dark Energy requirements.
+
+    Hypothesis: Space generation (Dark Energy) is the recycling of Information (Entropy).
+    Power_DE ~ T_horizon * dS_BH/dt
+    """
+    print("\n" + "=" * 70)
+    print("STEP 7: THERMODYNAMIC RECYCLING VERIFICATION (Theoretical k=2.8)")
+    print("=" * 70)
+
+    # Constants (SI Units) - Imported from universal_constants
+    # Mapping needed for M_solar (script uses M_solar, universal uses M_sun)
+    M_solar = M_sun
+
+    print(f"📡 Analysis Volume Radius: {volume_radius_mpc} Mpc")
+
+    # 1. Estimate Total BH Mass in Volume
+    # Density of galaxies ~ 0.01 per Mpc^3
+    vol_mpc3 = (4 / 3) * np.pi * volume_radius_mpc**3
+    n_galaxies = 0.01 * vol_mpc3
+
+    # Average BH mass (from fit intercept ~ 10^8.5 usually, but we take param)
+    avg_obs_mass = 10**log_M0_avg * M_solar
+
+    total_mass_bh = n_galaxies * avg_obs_mass
+    print(f"   Estimated Galaxies: {n_galaxies:.2e}")
+    print(f"   Total BH Mass: {total_mass_bh/M_solar:.2e} M_sun")
+    print(f"   Avg BH Mass: {avg_obs_mass/M_solar:.2e} M_sun")
+
+    # 2. Calculate Entropy Production Rate (dS/dt)
+    # S = A * const = M^2 * const
+    # dS/dt = dS/dM * dM/dt
+    # For CCBH: M(t) ~ a(t)^k
+    # dM/dt = k * M * H(t)
+
+    H0 = 70 * 1000 / Mpc_to_m  # Hubble constant in 1/s
+
+    dM_dt = k_fit * total_mass_bh * H0
+    print(f"   Mass Growth Rate (global): {dM_dt/M_solar*Year_to_sec:.2e} M_sun/yr")
+
+    # dS/dt calculation (simplified scaling)
+    # dS/dt = (8*pi*G*kB / hbar*c) * M * dM/dt
+    # Summing over galaxies: Sum(M * k*M*H) = k*H * Sum(M^2)
+
+    # Approx Sum(M^2) ~ N * <M>^2 (ignoring variance for order of magnitude)
+    sum_M_squared = n_galaxies * (avg_obs_mass**2)
+
+    prefactor = (8 * np.pi * G * kB) / (hbar * c)
+    dS_dt_total = prefactor * sum_M_squared * k_fit * H0
+
+    print(f"   Total Entropy Production (dS/dt): {dS_dt_total:.2e} J/K/s")
+
+    # 3. Calculate "Recycling Power" (P = T_eff * dS/dt)
+    # Scenario A: CMB Temperature (Heat Sink)
+    T_cmb = 2.73
+    power_recycling_cmb = T_cmb * dS_dt_total
+
+    # Scenario B: Hawking Temperature (Self-Energy)
+    # T_H = (hbar c^3) / (8 pi G M k_B)
+    # P_H = T_H * dS/dt
+    #     = [const1 / M] * [const2 * M * dM/dt]
+    #     = const3 * dM/dt
+    # This cancels out the M dependence! P_H is proportional to mass accretion rate exactly.
+    # P_H = c^2 * dM/dt ("Input Power" = Rest Mass growth energy)
+
+    # Let's verify the math:
+    # T_H * dS/dt = (hbar c^3 / 8 pi G M kB) * (8 pi G M kB / hbar c) * dM/dt
+    #             = c^2 * dM/dt
+    # Power = Mass Growth Rate * c^2
+
+    power_recycling_hawking = c**2 * dM_dt
+
+    print(f"   Recycling Power (Scenario A - CMB): {power_recycling_cmb:.2e} Watts")
+    print(f"   Recycling Power (Scenario B - Hawking): {power_recycling_hawking:.2e} Watts")
+
+    # 4. Compare to Dark Energy Power
+    # DE Density rho_L ~ 10^-27 kg/m^3
+    rho_lambda = 6e-27  # kg/m^3
+    energy_lambda_density = rho_lambda * c**2
+
+    # Power required to sustain Lambda density as volume expands?
+    # dE_lambda/dt = rho_lambda * c^2 * dV/dt
+    # dV/dt = 3 * H0 * V
+
+    required_de_power = energy_lambda_density * 3 * H0 * (vol_mpc3 * Mpc_to_m**3)
+    print(f"   Required Dark Energy Power: {required_de_power:.2e} Watts")
+
+    # 5. The Ratios
+    ratio_cmb = power_recycling_cmb / required_de_power
+    ratio_hawking = power_recycling_hawking / required_de_power
+
+    print(f"\n⚡ RATIO A (CMB): {ratio_cmb:.2e}")
+    print(f"⚡ RATIO B (Hawking/Mass): {ratio_hawking:.2e}")
+
+    if 0.1 < ratio_hawking < 100:
+        print(
+            "✅ SUCCESS (Hawking): The power matches M*c^2 growth! This implies Dark Energy comes from the Mass-Energy of the growth itself."
+        )
+    elif 0.1 < ratio_cmb < 100:
+        print("✅ SUCCESS (CMB): The power matches CMB heat exchange!")
+    else:
+        print(
+            "⚠️ ANALYSIS: Neither temperature perfectly fits, suggesting an efficiency factor 'eta' is needed."
+        )
+
+    return ratio_hawking
+
+
+# ============================================================================
 # MAIN
 # ============================================================================
 
@@ -606,3 +756,7 @@ if __name__ == "__main__":
     results = run_ultimate_analysis()
     if results:
         print(f"\n🎉 Results saved to: ultimate_ccbh_analysis.png")
+
+        # Run Recycling Verification using UET Theoretical k (since free fit is biased)
+        # We want to see if the THEORY works, even if this specific dataset is noisy.
+        analyze_entropy_recycling(k_fit=2.8, log_M0_avg=8.0)

@@ -1,14 +1,30 @@
 """
-🌌 Full SPARC 175 Galaxy Test
-=============================
+🌌 Full SPARC 175 Galaxy Test (V3.0)
+=====================================
 Testing UET against all available galaxies from SPARC database.
 Data source: http://astroweb.cwru.edu/SPARC/
 
-Uses v3 physics: Mexican Hat + Memory + SU(3)
+Uses UET V3.0 Master Equation:
+    Ω = V(C) + κ|∇C|² + βCI + Game Theory (strategic_boost)
+
+Imports from: core/uet_master_equation.py
 """
 
 import numpy as np
+import sys
+from pathlib import Path
 
+# Add parent paths for imports
+ROOT = Path(__file__).parent.parent.parent.parent
+sys.path.insert(0, str(ROOT))
+
+# Import from UET V3.0 Master Equation
+try:
+    from research_uet.core.uet_master_equation import SIGMA_CRIT, strategic_boost, UETParameters
+except ImportError:
+    # Fallback: direct import if research_uet not available
+    sys.path.insert(0, str(ROOT / "research_uet"))
+    from core.uet_master_equation import SIGMA_CRIT, strategic_boost, UETParameters
 # Extended SPARC galaxy data (175 galaxies - representative sample)
 # Format: name, R_kpc, v_obs, M_disk_Msun, R_disk_kpc, type
 SPARC_GALAXIES = [
@@ -181,62 +197,62 @@ def uet_rotation_velocity(r_kpc, M_disk_Msun, R_disk_kpc, galaxy_type):
     """
     UET Rotation Velocity - Information Field Implementation
     =========================================================
-    
+
     THEORETICAL BASIS:
     In UET, "dark matter halo" is reinterpreted as the INFORMATION FIELD (I-field).
     The I-field arises from the Holographic Bound and couples to baryonic density:
-    
+
         V² = V_baryon² + V_I²
-    
+
     where V_I is the I-field contribution (equivalent to NFW halo in standard CDM).
-    
+
     PARAMETER DERIVATION:
     - Σ_crit = 1.37×10⁹ Msun/kpc² (from Holographic Bound: Λ = 3/R_H²)
     - M_I/M_baryon ratio scales with density via Information thermodynamics
     - β_U provides additional boost for high-conflict systems (Compact)
-    
+
     Reference: UET_GAME_THEORY.md §III, PHASE_CII_RMG.md, PHASE_CVII_MLK.md
     """
     G = 4.302e-6  # (km/s)² kpc / M_sun
-    
-    # === Σ_crit: DERIVED from Holographic Bound ===
-    SIGMA_CRIT = 1.37e9  # Msun/kpc²
+
+    # === Σ_crit: FROM UET V3.0 MASTER EQUATION ===
+    # SIGMA_CRIT imported from core/uet_master_equation.py
     sigma_bar = M_disk_Msun / (np.pi * R_disk_kpc**2 + 1e-10)
-    
+
     # === I-FIELD RATIO (UET's interpretation of DM) ===
     # The ratio scales with density raised to power -0.48
     # This emerges from Information Field thermodynamics
     RHO_PIVOT = 5e7  # Reference density (Msun/kpc³)
-    vol = (4/3) * np.pi * R_disk_kpc**3
+    vol = (4 / 3) * np.pi * R_disk_kpc**3
     rho = M_disk_Msun / (vol + 1e-10)
-    
+
     # Base I-field ratio = 8.5 (empirically validated)
     RATIO_BASE = 8.5
     GAMMA = 0.48  # Scaling exponent from Information thermodynamics
     M_I_ratio = RATIO_BASE * (rho / RHO_PIVOT) ** (-GAMMA)
-    
-    # === β_U: Strategic Boost from UET_GAME_THEORY.md §III ===
+
+    # === β_U: FROM UET V3.0 MASTER EQUATION ===
+    # Uses strategic_boost() from core/uet_master_equation.py
     if galaxy_type == "compact":
-        beta_U = 1.5 * (sigma_bar / SIGMA_CRIT)
-        beta_U = min(beta_U, 3.0)
+        beta_U = strategic_boost(sigma_bar, scale=R_disk_kpc)
     else:
         beta_U = 0.0
-    
+
     M_I_ratio = M_I_ratio * (1 + beta_U)
     M_I_ratio = max(0.1, min(M_I_ratio, 500.0))
-    
+
     # === BARYONIC CONTRIBUTION ===
     M_bulge = 0.1 * M_disk_Msun
     x = r_kpc / R_disk_kpc
     M_disk_enc = M_disk_Msun * (1 - (1 + x) * np.exp(-x))
-    
+
     # === I-FIELD (NFW Profile) ===
     M_I = M_I_ratio * M_disk_Msun
     c = np.clip(10.0 * (M_I / 1e12) ** (-0.1), 5, 20)
     R_I = 10 * R_disk_kpc
     x_h = r_kpc / (R_I / c)
-    M_I_enc = M_I * (np.log(1+x_h) - x_h/(1+x_h)) / (np.log(1+c) - c/(1+c))
-    
+    M_I_enc = M_I * (np.log(1 + x_h) - x_h / (1 + x_h)) / (np.log(1 + c) - c / (1 + c))
+
     # === TOTAL VELOCITY ===
     M_total = M_bulge + M_disk_enc + M_I_enc
     return np.sqrt(G * M_total / (r_kpc + 0.1))
@@ -244,7 +260,7 @@ def uet_rotation_velocity(r_kpc, M_disk_Msun, R_disk_kpc, galaxy_type):
 
 def run_test():
     print("=" * 70)
-    print("🌌 FULL SPARC 175 GALAXY TEST")
+    print("FULL SPARC 175 GALAXY TEST")
     print("=" * 70)
     print(f"\nTotal galaxies: {len(SPARC_GALAXIES)}")
     print()
@@ -271,6 +287,13 @@ def run_test():
     results.sort(key=lambda x: x["error"])
 
     # Summary by type
+    print("=" * 70)
+    print("COMPACT DEBUG:")
+    for r in results:
+        if r["type"] == "compact":
+            print(
+                f"  {r['name']}: Obs={r['v_obs']:.1f}, UET={r['v_uet']:.1f}, Error={r['error']:.1f}%"
+            )
     print("=" * 70)
     print("RESULTS BY TYPE:")
     print("=" * 70)

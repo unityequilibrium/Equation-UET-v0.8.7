@@ -10,10 +10,27 @@ Methodology:
 2. Use UET Potential V(r) to calculate Tunneling Probability (WKB).
 3. Compute theoretical log(T1/2).
 4. Verify linear correlation (Geiger-Nuttall Law) between UET prediction and Real Data.
+
+Updated for UET V3.0
 """
 
 import numpy as np
 import matplotlib.pyplot as plt
+
+# Import from UET V3.0 Master Equation
+import sys
+from pathlib import Path
+_root = Path(__file__).parent
+while _root.name != "research_uet" and _root.parent != _root:
+    _root = _root.parent
+sys.path.insert(0, str(_root.parent))
+try:
+    from research_uet.core.uet_master_equation import (
+        UETParameters, SIGMA_CRIT, strategic_boost, potential_V, KAPPA_BEKENSTEIN
+    )
+except ImportError:
+    pass  # Use local definitions if not available
+
 import os
 
 
@@ -62,7 +79,7 @@ def run_test():
     print("☢️ UET REAL DATA TEST: ALPHA DECAY")
     print("=" * 60)
 
-    data_path = "research_uet/data/particle/alpha_decay_data.txt"
+    data_path = "research_uet/data/01_particle_physics/alpha_decay_data.txt"
     if not os.path.exists(data_path):
         print(f"❌ Error: Real data file not found at {data_path}")
         return

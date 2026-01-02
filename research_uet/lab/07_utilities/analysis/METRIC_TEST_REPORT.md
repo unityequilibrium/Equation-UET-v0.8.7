@@ -40,4 +40,4 @@ We successfully used **ONE EQUATION** ($V \propto C/I$) to describe:
 4.  Why AI learns (Minimizing Energy).
 5.  Why Nations divide (High $C$ forces separation).
 
-**The Theory of Everything isn't a force; it's a metric.**
+**UET constitutes a metric for optimization, not a force.**

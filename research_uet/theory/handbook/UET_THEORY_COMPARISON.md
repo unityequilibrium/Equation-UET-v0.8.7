@@ -42,7 +42,7 @@ We do not mock these theories. We stand on their shoulders. Their 50-year explor
 *   **UET's Path:** We focused on **Equilibrium**. We don't ask "what is possible?", we ask "what is stable?"
 
 ### 3.3 The Object Lesson (General)
-*   **What they tried:** Looking for the ultimate "Building Block" (String/Loop).
+*   **What they tried:** Looking for a fundamental "Building Block" (String/Loop).
 *   **The Lesson:** Maybe the universe isn't made of *objects*.
 *   **UET's Path:** We treat reality as a **Process** (Flow).
 

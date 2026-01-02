@@ -2,14 +2,41 @@
 🌌 Multi-Galaxy Test
 ====================
 Test UET predictions on 5+ galaxies using DERIVED parameters.
+
+Updated for UET V3.0
 """
 
 import numpy as np
+import sys
+
+# Import from UET V3.0 Master Equation
+import sys
+from pathlib import Path
+_root = Path(__file__).parent
+while _root.name != "research_uet" and _root.parent != _root:
+    _root = _root.parent
+sys.path.insert(0, str(_root.parent))
+try:
+    from research_uet.core.uet_master_equation import (
+        UETParameters, SIGMA_CRIT, strategic_boost, potential_V, KAPPA_BEKENSTEIN
+    )
+except ImportError:
+    pass  # Use local definitions if not available
+
+import os
+
+# Add research_uet root path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(current_dir))))
+if root_dir not in sys.path:
+    sys.path.insert(0, root_dir)
+
+from research_uet.theory.utility.universal_constants import G
 
 # Physical constants
-G = 6.674e-11  # m³/kg/s²
 kpc_to_m = 3.086e19  # m
 km_s_to_m_s = 1000  # m/s
+
 
 # Galaxy data from SPARC (simplified)
 GALAXIES = {

@@ -2,14 +2,38 @@
 Hybrid MOND-UET Galaxy Rotation Test (Version 5: Multi-Component Halo)
 ====================================================================
 Formula: g_final = (g_MOND * max(1, (rho/rho_ref)^kappa)) + (lambda_h * g_Newton)
+
+Updated for UET V3.0
 """
 
 import numpy as np
 import sys
+
+# Import from UET V3.0 Master Equation
+import sys
+from pathlib import Path
+_root = Path(__file__).parent
+while _root.name != "research_uet" and _root.parent != _root:
+    _root = _root.parent
+sys.path.insert(0, str(_root.parent))
+try:
+    from research_uet.core.uet_master_equation import (
+        UETParameters, SIGMA_CRIT, strategic_boost, potential_V, KAPPA_BEKENSTEIN
+    )
+except ImportError:
+    pass  # Use local definitions if not available
+
 import os
 
+# Add research_uet root path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(current_dir))))
+if root_dir not in sys.path:
+    sys.path.insert(0, root_dir)
+
+from research_uet.theory.utility.universal_constants import c
+
 # CONSTANTS
-c = 2.998e8
 H0 = 2.2e-18
 BETA_CI = 0.18
 a0_SI = BETA_CI * c * H0

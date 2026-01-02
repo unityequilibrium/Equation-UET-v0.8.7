@@ -4,15 +4,39 @@ UET Superfluid Validation Test
 Tests UET interpretation of superfluid phase transitions using real data.
 
 Principle: UET phase field naturally describes superfluidity.
+
+Updated for UET V3.0
 """
 
 import numpy as np
 import sys
+
+# Import from UET V3.0 Master Equation
+import sys
+from pathlib import Path
+
+_root = Path(__file__).parent
+while _root.name != "research_uet" and _root.parent != _root:
+    _root = _root.parent
+sys.path.insert(0, str(_root.parent))
+try:
+    from research_uet.core.uet_master_equation import (
+        UETParameters,
+        SIGMA_CRIT,
+        strategic_boost,
+        potential_V,
+        KAPPA_BEKENSTEIN,
+    )
+except ImportError:
+    pass  # Use local definitions if not available
+
 import os
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-from data_vault.condensed_matter.superfluid_data import (
+# Use local data
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "data"))
+from superfluid_data import (
     HELIUM_4_SUPERFLUID,
     HELIUM_3_SUPERFLUID,
     BEC_DATA,

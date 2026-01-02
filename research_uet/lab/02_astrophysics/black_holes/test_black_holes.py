@@ -4,10 +4,32 @@ UET Black Hole Validation Test
 Tests UET interpretation of black hole physics using real EHT data.
 
 Principle: UET supplements GR, doesn't replace it.
+
+Updated for UET V3.0
 """
 
 import numpy as np
 import sys
+
+# Import from UET V3.0 Master Equation
+import sys
+from pathlib import Path
+
+_root = Path(__file__).parent
+while _root.name != "research_uet" and _root.parent != _root:
+    _root = _root.parent
+sys.path.insert(0, str(_root.parent))
+try:
+    from research_uet.core.uet_master_equation import (
+        UETParameters,
+        SIGMA_CRIT,
+        strategic_boost,
+        potential_V,
+        KAPPA_BEKENSTEIN,
+    )
+except ImportError:
+    pass  # Use local definitions if not available
+
 import os
 
 sys.path.insert(
@@ -19,7 +41,9 @@ sys.path.insert(
     ),
 )
 
-from research_uet.data.astro.black_hole_data import (
+# Add data path
+sys.path.insert(0, os.path.join(_root, "data", "02_astrophysics"))
+from black_hole_data import (
     M87_BLACK_HOLE,
     SGR_A_BLACK_HOLE,
     STELLAR_BLACK_HOLES,
@@ -81,7 +105,7 @@ def test_schwarzschild_radius():
             all_pass = False
 
     print("\nUET Interpretation:")
-    print("  - Black hole = ultimate equilibrium state")
+    print("  - Black hole = limit of equilibrium state")
     print("  - Horizon = C-I gradient boundary")
     print("  - UET matches GR prediction exactly")
 

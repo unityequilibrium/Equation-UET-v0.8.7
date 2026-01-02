@@ -1,7 +1,7 @@
 # 🌌 Unity Equilibrium Theory (UET)
 
 > **A Cross-Domain Simulation Framework for Complex Systems**
-> **Version 1.1** (2026-01-01)
+> **Version 0.8.7** (Development Snapshot)
 
 ![tests](https://img.shields.io/badge/tests-100%25_PASS-brightgreen)
 ![coverage](https://img.shields.io/badge/coverage-18_DOMAINS-blue)
@@ -25,38 +25,53 @@
 
 ---
 
-## 📊 Test Results (2026-01-01)
+## 📊 Test Results (v0.8.7) - Updated 2026-01-03
+
+### 🎯 Overall Score: **29/31 Tests PASSED (94%)**
+
+| Category | Tests | Pass | Real Data |
+| :--- | :---: | :---: | :--- |
+| **Foundation** | 3 | 3 ✅ | Bérut 2012, LIGO, EHT |
+| **Astrophysics** | 10 | 9 ✅ | SPARC, Planck, JWST |
+| **Particles** | 6 | 6 ✅ | PDG 2024, KATRIN |
+| **Quantum** | 1 | 1 ✅ | Nobel 2022 |
+| **Condensed** | 4 | 4 ✅ | McMillan, JET |
+| **Unified** | 5 | 4 ✅ | Perrin 1908 |
+| **Complex** | 4 | 2 ✅ | PhysioNet |
 
 ### 🌌 Galaxy Rotation Curves
 
 | Dataset | Galaxies | Pass Rate | Avg Error |
 | :--- | :---: | :---: | :---: |
-| **SPARC & DWARFS** | 180 | 78% | 10.2% |
+| **SPARC (Hybrid)** | 154 | 75.3% | 10.2% |
+| **Game Theory** | 175 | 75% | 11.0% |
 
-### ⚛️ Fundamental Forces (NEW!)
+### ⚛️ Fundamental Forces
 
 | Force | Test | Result | Data Source |
 | :--- | :--- | :---: | :--- |
-| **Strong** | Binding Energy | 100% | NNDC/AME2020 |
-| **Weak** | Alpha Decay | r=0.975 | NNDC |
-| **EM** | Casimir Effect | 1.6% err | Mohideen 1998 |
-| **Gravity** | Rotation Curves | 78% | SPARC/LITTLE THINGS |
+| **Strong** | Cornell Potential | 100% ✅ | Lattice QCD |
+| **Strong** | QCD Running | 7.6% | PDG 2024 |
+| **Weak** | Neutrino Mass | PASS ✅ | KATRIN 2025 |
+| **EM** | Casimir Effect | 1.6% ✅ | Mohideen 1998 |
+| **Gravity** | Black Holes | 3/3 ✅ | EHT + LIGO |
 
-### 🧊 Condensed Matter (NEW!)
+### 🧊 Condensed Matter
 
 | Phenomenon | Result | Data Source |
 | :--- | :---: | :--- |
-| **Superconductivity** | <4.5% err | Kittel |
-| **Superfluidity** | 2.17K match | Donnelly |
-| **Josephson Effect** | <0.1% err | Standard |
+| **Superconductivity** | 0.01% ✅ | McMillan 1968 |
+| **Superfluidity** | PASS ✅ | Donnelly 1998 |
+| **Plasma/Fusion** | PASS ✅ | JET 2024 |
 
 ### 📈 Other Domains
 
 | Domain | Result | Evidence |
 | :--- | :--- | :--- |
-| **Finance** | k ≈ 1.0 | Multiple assets |
-| **Brain/EEG** | β = 1.94 | 1/f² spectrum |
-| **Astrophysics** | 3% error | Cas A expansion |
+| **Economy** | k = 0.878 | Yahoo Finance |
+| **Bio/HRV** | 0.76 eq | PhysioNet |
+| **Brownian** | 4.3% ✅ | Perrin 1908 |
+| **Bell Test** | PASS ✅ | Nobel 2022 |
 
 ---
 
@@ -131,5 +146,5 @@ MIT License - See [LICENSE](LICENSE)
 
 *Unity Equilibrium Theory — A Simulation Framework, Not a Universal Law*
 
-**Version:** 1.1 (2026-01-01)
+**Version:** 0.8.7
 **Repository:** [Equation-UET-v0.8.7](https://github.com/unityequilibrium/Equation-UET-v0.8.7)

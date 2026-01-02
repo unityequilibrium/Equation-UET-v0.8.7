@@ -4,6 +4,8 @@ UET Standard Model Validation Test
 Tests that UET properly SUPPLEMENTS (not replaces) Standard Model.
 
 Key Principle: UET adds interpretive layer to SM, doesn't change predictions.
+
+Updated for UET V3.0
 """
 
 import numpy as np
@@ -11,16 +13,33 @@ import sys
 import os
 
 # Add project root to path
-sys.path.insert(
-    0,
-    os.path.dirname(
-        os.path.dirname(
-            os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-        )
-    ),
-)
+import sys
 
-from research_uet.data.particle.particle_masses import (
+# Import from UET V3.0 Master Equation
+import sys
+from pathlib import Path
+_root = Path(__file__).parent
+while _root.name != "research_uet" and _root.parent != _root:
+    _root = _root.parent
+sys.path.insert(0, str(_root.parent))
+try:
+    from research_uet.core.uet_master_equation import (
+        UETParameters, SIGMA_CRIT, strategic_boost, potential_V, KAPPA_BEKENSTEIN
+    )
+except ImportError:
+    pass  # Use local definitions if not available
+
+import os
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# Go up 4 levels: lab/01/standard/ -> research_uet/
+root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(current_dir))))
+# Add data path (bypass 01_ prefix issue)
+data_dir = os.path.join(root_dir, "research_uet", "data", "01_particle_physics")
+if data_dir not in sys.path:
+    sys.path.insert(0, data_dir)
+
+from particle_masses import (
     QUARK_MASSES,
     LEPTON_MASSES,
     GAUGE_BOSON_MASSES,

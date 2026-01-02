@@ -1,0 +1,48 @@
+{
+  "source": "Planck Collaboration 2018, A&A 641, A6",
+  "cosmological_parameters": {
+    "H0": {
+      "value": 67.36,
+      "error": 0.54,
+      "unit": "km/s/Mpc"
+    },
+    "Omega_b_h2": {
+      "value": 0.02237,
+      "error": 0.00015
+    },
+    "Omega_c_h2": {
+      "value": 0.12,
+      "error": 0.0012
+    },
+    "Omega_Lambda": {
+      "value": 0.6847,
+      "error": 0.0073
+    },
+    "tau": {
+      "value": 0.0544,
+      "error": 0.0073
+    },
+    "n_s": {
+      "value": 0.9649,
+      "error": 0.0042
+    },
+    "ln10_A_s": {
+      "value": 3.044,
+      "error": 0.014
+    },
+    "sigma8": {
+      "value": 0.8111,
+      "error": 0.006
+    }
+  },
+  "derived": {
+    "age_Gyr": {
+      "value": 13.787,
+      "error": 0.02
+    },
+    "z_reion": {
+      "value": 7.67,
+      "error": 0.73
+    }
+  }
+}

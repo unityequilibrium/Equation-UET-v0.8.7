@@ -1,5 +1,23 @@
 # 🤝 Contributing to Unity Equilibrium Theory
 
+**Status: 29/31 Tests PASSED (94%) with REAL DATA**
+
+## 🌟 The Mission: Why We Build
+
+### The Problem: A Fragmented Universe
+For the last century, physics has been divided. We have **General Relativity** for the stars and **Quantum Mechanics** for the atoms, but they speak different languages.
+
+### The Solution: A Unified Perspective
+**Unity Equilibrium Theory (UET)** offers a new "Middle Language." It posits that the universe is a self-optimizing system seeking equilibrium.
+
+### 📚 Essential Reading for Contributors
+
+- **[🌉 UET Paper v0.8.7](research_uet/UET_PAPER_v0.8.7.md):** 29/31 tests validated
+- **[📊 Data Audit](research_uet/DATA_AUDIT_REPORT.md):** 94% real data coverage
+- **[🧪 Research Hub](research_uet/UET_RESEARCH_HUB.md):** All experiments
+
+---
+
 **Standard for Contributions: Rigorous, Real-Data Validation.**
 
 ---
