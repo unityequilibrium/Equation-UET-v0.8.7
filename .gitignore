@@ -18,7 +18,13 @@ runs_*/
 *.fit.gz
 *.csv
 timeseries*.csv
-research/ปรับ/
+research_uet/zip/
+/research_uet/lab/outputs/
+/research_uet/data_vault/
+*.zip
+*.npy
+*.fits
+
 
 # IDE
 .idea/
@@ -58,6 +64,4 @@ Thumbs.db
 .env
 *.local
 
-# Large folders to exclude
-Fali/
-KEEP/
+

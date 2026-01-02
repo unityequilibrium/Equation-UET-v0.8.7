@@ -10,10 +10,17 @@ import numpy as np
 import sys
 import os
 
-# Add research_uet root to path
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+# Add project root to path
+sys.path.insert(
+    0,
+    os.path.dirname(
+        os.path.dirname(
+            os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        )
+    ),
+)
 
-from data_vault.standard_model.particle_masses import (
+from research_uet.data.particle.particle_masses import (
     QUARK_MASSES,
     LEPTON_MASSES,
     GAUGE_BOSON_MASSES,

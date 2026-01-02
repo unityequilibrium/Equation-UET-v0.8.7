@@ -1,155 +1,66 @@
-# 🤝 Contributing to UET Harness
+# 🤝 Contributing to Unity Equilibrium Theory
 
-Thank you for your interest in contributing! 🎉
-
----
-
-## 📋 Ways to Contribute
-
-### 🐛 Report Bugs
-
-Open an issue with:
-- Description of the bug
-- Steps to reproduce
-- Expected vs actual behavior
-- Python version and OS
-
-### 📖 Documentation
-
-- Improve README, docstrings, or tutorials
-- Add examples for new use cases
-- Fix typos or clarify explanations
-
-### 🔬 Add Physics Tests
-
-- Propose new validation tests
-- Add real data comparisons
-- Extend to new physics domains
-
-### 🚀 Code Improvements
-
-- Performance optimizations
-- Bug fixes
-- New features (discuss first in an issue)
+**Standard for Contributions: Rigorous, Real-Data Validation.**
 
 ---
 
-## 🧪 Current Test Status (2026-01-01 v1.1)
+## � Physics Contribution Standards (STRICT)
 
-### ✅ Validated Domains (Real Data)
+We only accept physics contributions that are validated against **Independent Empirical Data**.
 
-| Domain | Tests | Pass Rate | Data Source |
-|:---|:---:|:---:|:---|
-| **Galaxies (SPARC)** | 154 | 78% | Lelli et al. 2016 |
-| **Dwarfs (LITTLE THINGS)** | 26 | 82% | Oh et al. 2015 |
-| **EM (Casimir)** | 12 | 92% | Mohideen 1998 |
-| **Strong Force** | 18 | 100% | NNDC/AME2020 |
-| **Weak Force** | 8 | 100% | NNDC |
-| **Muon g-2** | 1 | 100% | Fermilab 2025 |
-| **Superconductivity** | 6 | 100% | Kittel |
-| **Superfluidity** | 1 | 100% | Donnelly |
-| **Black Holes** | 4 | 100% | EHT/Sgr A* |
-| **Plasma** | 2 | 100% | JET/Parker |
-| **Cosmology** | 3 | 100% | Planck/HST/JWST |
+### 1. The Validation Matrix Requirement
+Every PR adding a physics domain must update the **README Matrix** with:
+1.  **Phenomenon:** What are you testing? (e.g., *Isotope Stability*)
+2.  **Equation:** Derived from `Ω[C, I]` (e.g., $E = \int \nabla C ...$)
+3.  **Data Source:** Must be a reputable catalog (e.g., *NNDC*, *CERN*, *NASA*).
+4.  **Error Metric:** Quantitative result (e.g., *RMSE < 5%*, *$R^2 > 0.95$*).
 
-**Total: 18/18 Domain Tests PASS** ✅
-
-### 🎯 Areas Needing Work:
-
-1. **Compact galaxies** - 40% pass rate (needs improvement)
-2. **Parameter derivation** - `k` is fitted, not derived
-3. **Peer review** - Academic validation pending
-4. **High-Tc superconductors** - Need more Cuprate tests
+### 2. Prohibited Content
+-   ❌ **No Pure Theory:** We do not accept "philosophical" papers without data.
+-   ❌ **No Ad-Hoc Fitting:** Constants ($\beta, \kappa$) must be consistent or explicitly derived.
 
 ---
 
-## 🔧 Development Setup
+## �️ Development Workflow
 
-```bash
-git clone https://github.com/unityequilibrium/Equation-UET-v0.8.7.git
-cd Equation-UET-v0.8.7
+1.  **Fork & Clone**:
+    ```bash
+    git clone https://github.com/unityequilibrium/Equation-UET-v0.8.7.git
+    cd Equation-UET-v0.8.7
+    ```
 
-# Create virtual environment
-python -m venv .venv
-.venv\Scripts\activate  # Windows
-source .venv/bin/activate  # Linux/Mac
+2.  **Run the Validation Suite (Before Submitting)**:
+    ```bash
+    cd research_uet/lab/07_utilities
+    python run_master_validation.py
+    ```
+    **PRs will be rejected if existing tests fail.**
 
-# Install dependencies
-pip install numpy scipy matplotlib
-
-# Run ALL validation tests
-cd research_uet/lab/07_utilities
-python run_master_validation.py
-
-# Generate charts
-python visualize_results.py
-```
-
----
-
-## 📝 Pull Request Guidelines
-
-1. **Fork** the repository
-2. **Create a branch** for your feature
-3. **Write tests** if applicable
-4. **Update docs** if needed
-5. **Submit PR** with clear description
+3.  **Add Your Test**:
+    -   Create a script in `lab/0X_domain/test_my_hypothesis.py`.
+    -   Import real data (CSV/JSON/FITS).
+    -   Calculate `predicted` vs `observed`.
+    -   Assert `error < tolerance`.
 
 ---
 
-## 💡 Feature Requests
+## � Bug Reports
 
-Before proposing a new feature:
-
-1. Check existing issues
-2. Open a discussion issue first
-3. Explain the use case
-4. Be patient for feedback
+Please include:
+1.  **Script Name**: Which laboratory script failed?
+2.  **Error Log**: The full Python traceback.
+3.  **Data Context**: Which dataset were you using?
 
 ---
 
-## 🔬 Physics Contributions
+## 🔍 Transparency
 
-If you're adding new physics tests:
-
-1. **Use UET equations** - Must use the core `Ω[C, I]` framework
-2. **Real data required** - Include citations to data sources
-3. **Document limitations** - Be honest about what doesn't work
-4. **Add to runner** - Update `run_all_validations.py`
+**AI-Assisted Framework:**
+This codebase was generated using agentic AI workflows.
+-   **Review Process:** Code is reviewed for *mathematical consistency*, not *authorship intent*.
+-   **Verification:** The ultimate arbiter is the **Data**.
 
 ---
 
-## 🔍 Transparency and Methodology Statement
-
-This project uses an **AI-Assisted Physics Framework** (Agentic Coding v0.8.7).
-- **Origin:** The theory is derived from computational simulation, not traditional academic channels.
-- **Verification:** All results are reproducible via the `lab/` scripts.
-- **Goal:** To bridge the gap between simulation and reality using a unifying equation.
-
-## 🤝 Invitation to Peer Review
-
-We explicitly invite scrutiny. Science thrives on falsifiability.
-1.  **Clone** the repo.
-2.  **Run** the tests (`python run_master_validation.py`).
-3.  **Break** the theory. Find where it fails.
-
-If you find a dataset where UET fails, **please open an issue**. We want to know.
-
----
-
-## 📜 Code of Conduct
-
-- Be respectful and inclusive
-- Focus on constructive feedback
-- Accept that UET has limitations (it's a simulation framework, not a universal law)
-
----
-
-## 📬 Contact
-
-- **Issues:** GitHub Issues
-- **Discussions:** GitHub Discussions
-
----
-
-*Thank you for helping improve UET!* 🙏
+## 📜 Legal
+By contributing, you agree that your code will be licensed under the project's **MIT License**.

@@ -93,6 +93,13 @@ research_uet/
 
 ---
 
+---
+
+## 📚 Theory Modules
+- **[Game Theory of Nature](theory/06_complex/UET_GAME_THEORY.md)**: The new thermodynamic game theory framework.
+- **[Academic References](theory/06_complex/GAME_THEORY_REFERENCES.md)**: External validation for Game-Theoretic Thermodynamics.
+- **[Market Dynamics](theory/06_complex/UET_MARKETS.md)**: Application to economic systems.
+
 ## 🚀 Quick Start
 
 ```bash

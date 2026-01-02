@@ -9,7 +9,7 @@ def run_test():
     print("============================================================")
 
     # 1. Load Real Data
-    data_path = "research_uet/data_vault/condensed_matter/real_condensed_data.json"
+    data_path = "research_uet/data/condensed/real_condensed_data.json"
     try:
         with open(data_path, "r") as f:
             data = json.load(f)["superfluids"]

@@ -14,10 +14,11 @@ import matplotlib.pyplot as plt
 from pathlib import Path
 
 # Try to load real market data
-DATA_DIR = Path("research_v3/02_global_economy/data")
+# CORRECTED PATH: Points to the verified 'references/economy' folder
+DATA_DIR = Path(__file__).parents[3] / "data" / "references" / "economy"
 
 
-def load_market_data(symbol="SP500_US.csv"):
+def load_market_data(symbol="SP500_yahoo_real.csv"):
     """Load real market data."""
     path = DATA_DIR / symbol
     if path.exists():
@@ -171,8 +172,8 @@ def run_test():
     print("Method: Cahn-Hilliard inspired mean reversion + momentum")
     print()
 
-    # Test on multiple datasets
-    datasets = ["SP500_US.csv", "Bitcoin.csv", "Gold.csv"]
+    # Test on multiple datasets (Real Data verified)
+    datasets = ["SP500_yahoo_real.csv", "Bitcoin_yahoo_real.csv", "Gold_yahoo_real.csv"]
 
     results = []
 
@@ -235,7 +236,8 @@ def run_test():
         plt.legend()
         plt.grid(True, alpha=0.3)
 
-        output_path = Path("research_uet/evidence/time_series_prediction.png")
+        # Save to current script directory to avoid path errors
+        output_path = Path(__file__).parent / "time_series_prediction.png"
         plt.savefig(output_path, dpi=150)
         print(f"\nPlot saved: {output_path}")
         plt.close()

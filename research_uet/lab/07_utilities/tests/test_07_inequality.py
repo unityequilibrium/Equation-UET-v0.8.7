@@ -12,7 +12,7 @@ import pandas as pd
 import os
 import glob
 
-DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "real_data_sources")
+DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "06_complex_systems")
 
 
 def load_inequality_data():

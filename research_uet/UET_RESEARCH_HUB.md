@@ -81,10 +81,10 @@ Welcome to the organized archives of UET. This document serves as your map to na
 
 ## 📚 Key Readings
 
-1.  **[The Grand Summary](docs/UET_GRAND_SUMMARY.md):** If you only read one file, read this.
-2.  **[Physics Validation Summary](PHYSICS_VALIDATION_SUMMARY.md):** All test results.
-3.  **[Theory Papers Index](theory/papers/README.md):** 4 Forces, Quantum, Cosmology papers.
-4.  **[Academic Summary](ACADEMIC_SUMMARY.md):** For researchers and educators.
+1.  🌟 **[UET Final Paper 2026](UET_FINAL_PAPER_2026.md):** The authoritative, unified report (v2.0) with k=-2.07 Black Hole findings.
+2.  **[Master Theory Reference](theory/UET_MASTER_SUMMARY_2026.md):** Detailed theoretical breakdown.
+3.  **[Validated Data Index](theory/DATA_VALIDATION_2026.md):** Strict list of real-world data sources.
+4.  **[Legacy Archive](_archive/):** Previous reports (`UET_FULL_PAPER.md`, etc.).
 
 ---
 
