@@ -24,7 +24,7 @@ We realized that the rules governing human relationships (Ethics) are identical 
 
 The entire universe is modeled as a maximization of equilibrium ($\Omega$) where **Existence has a Price**.
 
-### $$ \Omega = c \cdot I $$
+### $$\Omega = c \cdot I$$
 
 *   **c (Speed of Light)**: The **Processing Limit**. It acts as the "Exchange Rate" between Space and Time. It emerged naturally from our calculations as the constraint on causality.
 *   **I (Information Check)**: The **Latency** or "Lag" of existence. In physics, we call this Mass.
@@ -34,6 +34,7 @@ The entire universe is modeled as a maximization of equilibrium ($\Omega$) where
 For computational simulation, this logic translates into the Phase Field equation used in this repository:
 ```math
 Ω[C, I] = ∫ [V(C) + (κ/2)|∇C|² + β·C·I + ½I²] dx
+```
 
 ---
 
