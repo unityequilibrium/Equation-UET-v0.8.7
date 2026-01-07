@@ -1,0 +1,26 @@
+{
+  "brownian": {
+    "file": "test_04_brownian_entropy.py",
+    "success": false,
+    "output": "",
+    "error": "Traceback (most recent call last):\n  File \"C:\\Users\\santa\\Desktop\\lad\\Lab_uet_harness_v0.8.7\\research_uet\\topics\\0.10_Fluid_Dynamics_Chaos\\Code\\brownian\\test_04_brownian_entropy.py\", line 47, in <module>\n    from brownian_data import (\n    ...<4 lines>...\n    )\nModuleNotFoundError: No module named 'brownian_data'\n"
+  },
+  "poiseuille": {
+    "file": "test_01_poiseuille_pipe.py",
+    "success": false,
+    "output": "",
+    "error": "Traceback (most recent call last):\n  File \"C:\\Users\\santa\\Desktop\\lad\\Lab_uet_harness_v0.8.7\\research_uet\\topics\\0.10_Fluid_Dynamics_Chaos\\Code\\poiseuille\\test_01_poiseuille_pipe.py\", line 14, in <module>\n    from research_uet.core.uet_matrix_engine import UniverseState, MatrixEvolution\nModuleNotFoundError: No module named 'research_uet'\n"
+  },
+  "three_body": {
+    "file": "test_07_three_body_chaos.py",
+    "success": false,
+    "output": "",
+    "error": "Traceback (most recent call last):\n  File \"C:\\Users\\santa\\Desktop\\lad\\Lab_uet_harness_v0.8.7\\research_uet\\topics\\0.10_Fluid_Dynamics_Chaos\\Code\\three_body\\test_07_three_body_chaos.py\", line 13, in <module>\n    from research_uet.core.uet_matrix_engine import UniverseState, MatrixEvolution\nModuleNotFoundError: No module named 'research_uet'\n"
+  },
+  "turbulence": {
+    "file": "test_03_turbulence_stress.py",
+    "success": false,
+    "output": "",
+    "error": "Traceback (most recent call last):\n  File \"C:\\Users\\santa\\Desktop\\lad\\Lab_uet_harness_v0.8.7\\research_uet\\topics\\0.10_Fluid_Dynamics_Chaos\\Code\\turbulence\\test_03_turbulence_stress.py\", line 11, in <module>\n    from research_uet.core.uet_matrix_engine import UniverseState, MatrixEvolution\nModuleNotFoundError: No module named 'research_uet'\n"
+  }
+}

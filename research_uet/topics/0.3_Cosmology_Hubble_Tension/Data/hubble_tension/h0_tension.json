@@ -1,0 +1,16 @@
+{
+  "source": "Planck 2018 + SH0ES 2022",
+  "data": {
+    "H0_planck": {
+      "value": 67.4,
+      "error": 0.5,
+      "units": "km/s/Mpc"
+    },
+    "H0_shoes": {
+      "value": 73.04,
+      "error": 1.04,
+      "units": "km/s/Mpc"
+    },
+    "tension_sigma": 4.4
+  }
+}

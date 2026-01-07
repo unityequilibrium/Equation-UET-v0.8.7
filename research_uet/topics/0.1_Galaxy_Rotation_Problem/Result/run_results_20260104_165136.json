@@ -1,0 +1,8 @@
+{
+  "galaxy_rotation_175": {
+    "file": "test_little_things.py",
+    "success": false,
+    "output": "",
+    "error": "Traceback (most recent call last):\n  File \"C:\\Users\\santa\\Desktop\\lad\\Lab_uet_harness_v0.8.7\\research_uet\\topics\\0.1_Galaxy_Rotation_Problem\\Code\\galaxy_rotation_175\\test_little_things.py\", line 41, in <module>\n    from little_things_data import (\n    ...<7 lines>...\n    )\nImportError: cannot import name 'SURVEY_INFO' from 'little_things_data' (C:\\Users\\santa\\Desktop\\lad\\Lab_uet_harness_v0.8.7\\research_uet\\topics\\0.1_Galaxy_Rotation_Problem\\Code\\galaxy_rotation_175\\little_things_data.py)\n"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "source": "Event Horizon Telescope",
+  "data": {
+    "M87": {
+      "shadow_uas": {
+        "value": 42,
+        "error": 3
+      },
+      "mass_solar": {
+        "value": 6500000000.0,
+        "error": 700000000.0
+      },
+      "distance_Mpc": {
+        "value": 16.8,
+        "error": 0.8
+      },
+      "doi": "10.3847/2041-8213/ab0ec7"
+    },
+    "SgrA": {
+      "shadow_uas": {
+        "value": 51.8,
+        "error": 2.3
+      },
+      "mass_solar": {
+        "value": 4000000.0,
+        "error": 500000.0
+      },
+      "distance_kpc": {
+        "value": 8.178,
+        "error": 0.035
+      },
+      "doi": "10.3847/2041-8213/ac6674"
+    }
+  }
+}

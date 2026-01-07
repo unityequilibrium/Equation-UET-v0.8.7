@@ -1,0 +1,13 @@
+{
+  "source": "Bérut et al. 2012 - Nature",
+  "doi": "10.1038/nature10872",
+  "data": {
+    "T_K": 300,
+    "kT_ln2_J": 2.87e-21,
+    "measured_heat_J": {
+      "value": 3e-21,
+      "error": 5e-22
+    },
+    "verification": "Landauer limit verified experimentally"
+  }
+}

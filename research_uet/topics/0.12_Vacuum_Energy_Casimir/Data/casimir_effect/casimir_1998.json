@@ -1,0 +1,11 @@
+{
+  "source": "Mohideen & Roy 1998",
+  "doi": "10.1103/PhysRevLett.81.4549",
+  "sphere_radius_um": 196,
+  "note": "Data derived from PFA formula F = π³Rℏc/(360d³)",
+  "data": {
+    "plate_separation_nm": [100, 200, 300, 500, 900],
+    "force_nN": [0.545, 0.068, 0.020, 0.0044, 0.0008]
+  },
+  "formula": "F = π³Rℏc/(360d³) [sphere-plate PFA]"
+}

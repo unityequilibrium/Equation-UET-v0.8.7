@@ -1,0 +1,22 @@
+{
+    "water_20c": {
+        "density": 998.2,
+        "viscosity": 0.001002,
+        "source": "NIST Chemistry WebBook"
+    },
+    "air_20c": {
+        "density": 1.204,
+        "viscosity": 1.81e-05,
+        "source": "NIST / Engineering Toolbox"
+    },
+    "glycerin_20c": {
+        "density": 1261.0,
+        "viscosity": 1.412,
+        "source": "CRC Handbook of Chemistry and Physics"
+    },
+    "mercury_20c": {
+        "density": 13546.0,
+        "viscosity": 0.001526,
+        "source": "NIST"
+    }
+}

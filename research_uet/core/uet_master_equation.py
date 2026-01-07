@@ -318,7 +318,12 @@ def strategic_boost(density: float, scale: float = 1.0) -> float:
     if density_ratio > 1.0:
         payoff_gradient = 2.0 * np.log10(1 + density_ratio)
     else:
-        payoff_gradient = 0.0
+        # SCARCITY BOOST (Axiom 8b): Low density systems optimize harder to survive
+        # "เมื่อทรัพยากร (Mass) ต่ำ ต้องใช้ Information (Strategy) สูง"
+        if density_ratio < 0.1 and density_ratio > 0:
+            payoff_gradient = 1.5 * (0.1 / (density_ratio + 1e-9)) ** 0.25
+        else:
+            payoff_gradient = 0.0
 
     beta_U = beta_base + payoff_gradient
 
@@ -408,6 +413,36 @@ def layer_coherence_term(C_layers: List[np.ndarray], dx: float, params: UETParam
 # =============================================================================
 # COMPLETE OMEGA FUNCTIONAL - ALL AXIOMS
 # =============================================================================
+
+
+# =============================================================================
+# UNIFIED DENSITY LAW (GALAXY ROTATION)
+# =============================================================================
+
+
+def calculate_halo_ratio(rho: float, sigma_bar: float, r_kpc: float) -> float:
+    """
+    🌌 Unified Density Law: M_halo / M_disk Ratio
+
+    Derivation from UET_GALAXY_ROTATION_PAPER.md:
+    Ratio = Ratio_0 * (rho / rho_0)^-gamma
+
+    Where:
+      Ratio_0 = 8.5 (Pivot ratio)
+      rho_0   = 5e7 M_sun/kpc^3 (Pivot density)
+      gamma   = 0.48 (Thermodynamic scaling index)
+
+    This unifies Spiral and Dwarf galaxies under a single vacuum pressure law.
+    """
+    RHO_0 = 5e7
+    GAMMA = 0.48
+    RATIO_0 = 8.5
+
+    if rho <= 1.0:  # Prevent division by zero or negative density
+        return RATIO_0
+
+    ratio = RATIO_0 * (rho / RHO_0) ** -GAMMA
+    return ratio
 
 
 def omega_functional_complete(
