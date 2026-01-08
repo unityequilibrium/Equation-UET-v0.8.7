@@ -137,11 +137,12 @@ The UET Framework is now exhaustively verified across 5 sections of physics, res
 
 ---
 
-## � Research Hub (Core Documentation)
+## 📂 Research Hub (Core Documentation)
 
-*   **📘 [Final Paper (Submission Ready)](research_uet/UET_FINAL_PAPER_SUBMISSION.md):** The rigorous academic proof including the 5-sigma claims.
-*   **� [Narrative Paper](research_uet/UET_NARRATIVE_PAPER.md):** The philosophical story of "The Cost of Reality" and Ethical Origins.
-*   **🧪 [Theory Center](research_uet/theory/):** Detailed derivations.
+*   **📘 [Final Paper (Submission Ready)](research_uet/topics/paper.md):** The rigorous academic proof including the 5-sigma claims.
+*   **📖 [Narrative Paper](research_uet/UET_NARRATIVE_PAPER.md):** The story of "The Science of System Longevity".
+*   **🗺️ [Complete Data Map](research_uet/topics/COMPLETE_DATA_MAP.md):** Global index of all 18 solutions and data sources.
+*   **🧪 [Theory Center](research_uet/THEORY_MAP.md):** Detailed Concept Definitions.
 
 ---
 
@@ -163,13 +164,13 @@ python research_uet/topics/run_all_tests.py
 **Invitation to Falsify**: We do not claim this theory is absolute truth. We claim it is a *compelling model* that fits the data. We invite the global physics community to test, break, and falsify it.
 
 **Methodology Disclosure (Human + AI)**:
-*   **Conceptual Framework**: Developed by the human author based on the "Thermodynamics of System Robustness" (Ethics).
+*   **Conceptual Framework**: Developed by the human author based on the "Thermodynamics of System Robustness" (Utility/Ethics).
 *   **Mathematical Derivations & Simulations**: Executed by advanced AI assistants to ensure rigorous mathematical consistency and code execution.
-*   **Verification**: All results are reproducible via the provided Python scripts in `lab/`.
+*   **Verification**: All results are reproducible via the provided Python scripts in `research_uet/`.
 
 **Challenge:**
 1. Download the code.
-2. Run the `lab/` validation suite against the real data.
+2. Run the `research_uet/topics/run_all_tests.py` validation suite against the real data.
 3. If it fails, open an issue.
 
 *Version 0.8.7 | Open Source | MIT License*
